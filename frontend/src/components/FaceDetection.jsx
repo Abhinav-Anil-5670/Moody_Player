@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import * as faceapi from "face-api.js";
+import './FaceDetection.css'
 
 export default function FaceDetection() {
   const videoRef = useRef(null);
@@ -49,14 +50,14 @@ export default function FaceDetection() {
   };
 
   return (
-    <div className="flex flex-col items-center gap-4">
+    <div className=" mood-element">
       <video
         ref={videoRef}
         autoPlay
         muted
         width="720"
         height="560"
-        className="rounded-xl shadow-lg"
+        className="rounded-xl shadow-lg video"
       />
       <button
         onClick={detectFace}
