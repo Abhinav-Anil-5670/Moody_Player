@@ -1,5 +1,6 @@
 import './App.css'
 import FaceDetection from './components/FaceDetection'
+import MoodSongs from './components/MoodSongs'
 
 function App() {
   
@@ -7,6 +8,7 @@ function App() {
   return (
     <>
       <FaceDetection/>
+      <MoodSongs/>
     </>
   )
 }
