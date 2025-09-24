@@ -1,4 +1,5 @@
 var Imagekit = require("imagekit")
+var mongoose = require("mongoose")
 
 var imagekit = new Imagekit({
     publicKey : process.env.IMAGEKIT_PUBLIC_KEY,
@@ -10,7 +11,8 @@ function uploadFile(file){
     return new Promise((resolve, reject)=>{
         imagekit.upload({
             file :  file.buffer,
-            fileName : "Song"
+            fileName : new mongoose.Types.ObjectId().toString(),
+            folder:'moody-player'
         },(error,result)=>{
             if(error){
                 reject(error)
