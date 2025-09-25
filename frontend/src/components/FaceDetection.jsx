@@ -1,8 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import * as faceapi from "face-api.js";
 import './FaceDetection.css'
+import axios from 'axios'
 
-export default function FaceDetection() {
+export default function FaceDetection({setSongs}) {
   const videoRef = useRef(null);
 
   useEffect(() => {
@@ -44,6 +45,11 @@ export default function FaceDetection() {
       const sorted = Object.entries(expressions).sort((a, b) => b[1] - a[1]);
       const topExpression = sorted[0][0];
       console.log("Detected expression:", topExpression);
+      axios.get(`http://localhost:3000/songs?mood=${topExpression}`).then(response=>{
+        console.log(response.data)
+        setSongs(response.data.song)
+        
+      })
     } else {
       console.log("No face detected.");
     }
